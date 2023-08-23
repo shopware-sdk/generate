@@ -1,0 +1,928 @@
+{
+  "name": "order",
+  "translatable": [],
+  "properties":
+  {
+    "id":
+    {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "versionId":
+    {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "autoIncrement":
+    {
+      "type": "integer",
+      "format": "int64",
+      "readOnly": true
+    },
+    "orderNumber":
+    {
+      "type": "string"
+    },
+    "billingAddressId":
+    {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "billingAddressVersionId":
+    {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "currencyId":
+    {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "languageId":
+    {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "salesChannelId":
+    {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "orderDateTime":
+    {
+      "type": "string",
+      "format": "date-time"
+    },
+    "orderDate":
+    {
+      "type": "string",
+      "readOnly": true
+    },
+    "price":
+    {
+      "required": ["netPrice", "totalPrice", "positionPrice", "rawTotal", "taxStatus"],
+      "properties":
+      {
+        "netPrice":
+        {
+          "type": "number",
+          "format": "float"
+        },
+        "totalPrice":
+        {
+          "type": "number",
+          "format": "float"
+        },
+        "calculatedTaxes":
+        {
+          "type": "object"
+        },
+        "taxRules":
+        {
+          "type": "object"
+        },
+        "positionPrice":
+        {
+          "type": "number",
+          "format": "float"
+        },
+        "rawTotal":
+        {
+          "type": "number",
+          "format": "float"
+        },
+        "taxStatus":
+        {
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "amountTotal":
+    {
+      "type": "number",
+      "format": "float",
+      "readOnly": true
+    },
+    "amountNet":
+    {
+      "type": "number",
+      "format": "float",
+      "readOnly": true
+    },
+    "positionPrice":
+    {
+      "type": "number",
+      "format": "float",
+      "readOnly": true
+    },
+    "taxStatus":
+    {
+      "type": "string",
+      "readOnly": true
+    },
+    "shippingCosts":
+    {
+      "required": ["unitPrice", "totalPrice", "quantity"],
+      "properties":
+      {
+        "unitPrice":
+        {
+          "type": "number",
+          "format": "float"
+        },
+        "totalPrice":
+        {
+          "type": "number",
+          "format": "float"
+        },
+        "quantity":
+        {
+          "type": "integer",
+          "format": "int64"
+        },
+        "calculatedTaxes":
+        {
+          "type": "object"
+        },
+        "taxRules":
+        {
+          "type": "object"
+        },
+        "referencePrice":
+        {
+          "type": "object"
+        },
+        "listPrice":
+        {
+          "properties":
+          {
+            "price":
+            {
+              "type": "number",
+              "format": "float"
+            },
+            "discount":
+            {
+              "type": "number",
+              "format": "float"
+            },
+            "percentage":
+            {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          "type": "object"
+        },
+        "regulationPrice":
+        {
+          "properties":
+          {
+            "price":
+            {
+              "type": "number",
+              "format": "float"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
+    "shippingTotal":
+    {
+      "type": "number",
+      "format": "float",
+      "readOnly": true
+    },
+    "currencyFactor":
+    {
+      "type": "number",
+      "format": "float"
+    },
+    "deepLinkCode":
+    {
+      "type": "string"
+    },
+    "affiliateCode":
+    {
+      "type": "string"
+    },
+    "campaignCode":
+    {
+      "type": "string"
+    },
+    "customerComment":
+    {
+      "type": "string"
+    },
+    "stateId":
+    {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "ruleIds":
+    {
+      "type": "array",
+      "items":
+      {
+        "type": "string"
+      }
+    },
+    "customFields":
+    {
+      "type": "object"
+    },
+    "createdById":
+    {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "updatedById":
+    {
+      "type": "string",
+      "pattern": "^[0-9a-f]{32}$"
+    },
+    "itemRounding":
+    {
+      "properties":
+      {
+        "decimals":
+        {
+          "type": "integer",
+          "format": "int64"
+        },
+        "interval":
+        {
+          "type": "number",
+          "format": "float"
+        },
+        "roundForNet":
+        {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "totalRounding":
+    {
+      "properties":
+      {
+        "decimals":
+        {
+          "type": "integer",
+          "format": "int64"
+        },
+        "interval":
+        {
+          "type": "number",
+          "format": "float"
+        },
+        "roundForNet":
+        {
+          "type": "boolean"
+        }
+      },
+      "type": "object"
+    },
+    "createdAt":
+    {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "updatedAt":
+    {
+      "type": "string",
+      "format": "date-time",
+      "readOnly": true
+    },
+    "relationships":
+    {
+      "properties":
+      {
+        "stateMachineState":
+        {
+          "properties":
+          {
+            "links":
+            {
+              "type": "object",
+              "properties":
+              {
+                "related":
+                {
+                  "type": "string",
+                  "format": "uri-reference",
+                  "example": "\/order\/e1637a42d6e84d918477aa0ad44055a2\/stateMachineState"
+                }
+              }
+            },
+            "data":
+            {
+              "type": "object",
+              "properties":
+              {
+                "type":
+                {
+                  "type": "string",
+                  "example": "state_machine_state"
+                },
+                "id":
+                {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "example": "228e16d150da4ef89d42bbcecabf3c84"
+                }
+              }
+            }
+          },
+          "type": "object"
+        },
+        "orderCustomer":
+        {
+          "properties":
+          {
+            "links":
+            {
+              "type": "object",
+              "properties":
+              {
+                "related":
+                {
+                  "type": "string",
+                  "format": "uri-reference",
+                  "example": "\/order\/e1637a42d6e84d918477aa0ad44055a2\/orderCustomer"
+                }
+              }
+            },
+            "data":
+            {
+              "type": "object",
+              "properties":
+              {
+                "type":
+                {
+                  "type": "string",
+                  "example": "order_customer"
+                },
+                "id":
+                {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "example": "f51f13ae06bb4c41abddf982cf27c113"
+                }
+              }
+            }
+          },
+          "type": "object"
+        },
+        "currency":
+        {
+          "properties":
+          {
+            "links":
+            {
+              "type": "object",
+              "properties":
+              {
+                "related":
+                {
+                  "type": "string",
+                  "format": "uri-reference",
+                  "example": "\/order\/e1637a42d6e84d918477aa0ad44055a2\/currency"
+                }
+              }
+            },
+            "data":
+            {
+              "type": "object",
+              "properties":
+              {
+                "type":
+                {
+                  "type": "string",
+                  "example": "currency"
+                },
+                "id":
+                {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "example": "008922f5393b4aca9c58e30b98fda58c"
+                }
+              }
+            }
+          },
+          "type": "object"
+        },
+        "language":
+        {
+          "properties":
+          {
+            "links":
+            {
+              "type": "object",
+              "properties":
+              {
+                "related":
+                {
+                  "type": "string",
+                  "format": "uri-reference",
+                  "example": "\/order\/e1637a42d6e84d918477aa0ad44055a2\/language"
+                }
+              }
+            },
+            "data":
+            {
+              "type": "object",
+              "properties":
+              {
+                "type":
+                {
+                  "type": "string",
+                  "example": "language"
+                },
+                "id":
+                {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "example": "216a0113a0364cac8451846d1132dea6"
+                }
+              }
+            }
+          },
+          "type": "object"
+        },
+        "salesChannel":
+        {
+          "properties":
+          {
+            "links":
+            {
+              "type": "object",
+              "properties":
+              {
+                "related":
+                {
+                  "type": "string",
+                  "format": "uri-reference",
+                  "example": "\/order\/e1637a42d6e84d918477aa0ad44055a2\/salesChannel"
+                }
+              }
+            },
+            "data":
+            {
+              "type": "object",
+              "properties":
+              {
+                "type":
+                {
+                  "type": "string",
+                  "example": "sales_channel"
+                },
+                "id":
+                {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "example": "a19f7a30fa19488fa96d14b999baedde"
+                }
+              }
+            }
+          },
+          "type": "object"
+        },
+        "addresses":
+        {
+          "properties":
+          {
+            "links":
+            {
+              "type": "object",
+              "properties":
+              {
+                "related":
+                {
+                  "type": "string",
+                  "format": "uri-reference",
+                  "example": "\/order\/e1637a42d6e84d918477aa0ad44055a2\/addresses"
+                }
+              }
+            },
+            "data":
+            {
+              "type": "array",
+              "items":
+              {
+                "type": "object",
+                "properties":
+                {
+                  "type":
+                  {
+                    "type": "string",
+                    "example": "order_address"
+                  },
+                  "id":
+                  {
+                    "type": "string",
+                    "example": "cdf9780ef3a847f7bb62c6de9a2ca6dd"
+                  }
+                }
+              }
+            }
+          },
+          "type": "object"
+        },
+        "billingAddress":
+        {
+          "properties":
+          {
+            "links":
+            {
+              "type": "object",
+              "properties":
+              {
+                "related":
+                {
+                  "type": "string",
+                  "format": "uri-reference",
+                  "example": "\/order\/e1637a42d6e84d918477aa0ad44055a2\/billingAddress"
+                }
+              }
+            },
+            "data":
+            {
+              "type": "object",
+              "properties":
+              {
+                "type":
+                {
+                  "type": "string",
+                  "example": "order_address"
+                },
+                "id":
+                {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "example": "25548beca2dd466a9cb6fd7dff94a869"
+                }
+              }
+            }
+          },
+          "type": "object"
+        },
+        "deliveries":
+        {
+          "properties":
+          {
+            "links":
+            {
+              "type": "object",
+              "properties":
+              {
+                "related":
+                {
+                  "type": "string",
+                  "format": "uri-reference",
+                  "example": "\/order\/e1637a42d6e84d918477aa0ad44055a2\/deliveries"
+                }
+              }
+            },
+            "data":
+            {
+              "type": "array",
+              "items":
+              {
+                "type": "object",
+                "properties":
+                {
+                  "type":
+                  {
+                    "type": "string",
+                    "example": "order_delivery"
+                  },
+                  "id":
+                  {
+                    "type": "string",
+                    "example": "86a5022a91a649b3aa43c3bec9e4f301"
+                  }
+                }
+              }
+            }
+          },
+          "type": "object"
+        },
+        "lineItems":
+        {
+          "properties":
+          {
+            "links":
+            {
+              "type": "object",
+              "properties":
+              {
+                "related":
+                {
+                  "type": "string",
+                  "format": "uri-reference",
+                  "example": "\/order\/e1637a42d6e84d918477aa0ad44055a2\/lineItems"
+                }
+              }
+            },
+            "data":
+            {
+              "type": "array",
+              "items":
+              {
+                "type": "object",
+                "properties":
+                {
+                  "type":
+                  {
+                    "type": "string",
+                    "example": "order_line_item"
+                  },
+                  "id":
+                  {
+                    "type": "string",
+                    "example": "52ca4037bb6146199e695008c55855e6"
+                  }
+                }
+              }
+            }
+          },
+          "type": "object"
+        },
+        "transactions":
+        {
+          "properties":
+          {
+            "links":
+            {
+              "type": "object",
+              "properties":
+              {
+                "related":
+                {
+                  "type": "string",
+                  "format": "uri-reference",
+                  "example": "\/order\/e1637a42d6e84d918477aa0ad44055a2\/transactions"
+                }
+              }
+            },
+            "data":
+            {
+              "type": "array",
+              "items":
+              {
+                "type": "object",
+                "properties":
+                {
+                  "type":
+                  {
+                    "type": "string",
+                    "example": "order_transaction"
+                  },
+                  "id":
+                  {
+                    "type": "string",
+                    "example": "6abc4f85dfbd4975acc337f9712d6968"
+                  }
+                }
+              }
+            }
+          },
+          "type": "object"
+        },
+        "documents":
+        {
+          "properties":
+          {
+            "links":
+            {
+              "type": "object",
+              "properties":
+              {
+                "related":
+                {
+                  "type": "string",
+                  "format": "uri-reference",
+                  "example": "\/order\/e1637a42d6e84d918477aa0ad44055a2\/documents"
+                }
+              }
+            },
+            "data":
+            {
+              "type": "array",
+              "items":
+              {
+                "type": "object",
+                "properties":
+                {
+                  "type":
+                  {
+                    "type": "string",
+                    "example": "document"
+                  },
+                  "id":
+                  {
+                    "type": "string",
+                    "example": "cf8e5685986246708d63df6d470792f0"
+                  }
+                }
+              }
+            }
+          },
+          "type": "object"
+        },
+        "tags":
+        {
+          "properties":
+          {
+            "links":
+            {
+              "type": "object",
+              "properties":
+              {
+                "related":
+                {
+                  "type": "string",
+                  "format": "uri-reference",
+                  "example": "\/order\/e1637a42d6e84d918477aa0ad44055a2\/tags"
+                }
+              }
+            },
+            "data":
+            {
+              "type": "array",
+              "items":
+              {
+                "type": "object",
+                "properties":
+                {
+                  "type":
+                  {
+                    "type": "string",
+                    "example": "tag"
+                  },
+                  "id":
+                  {
+                    "type": "string",
+                    "example": "2b4003d6b60b4361b7b74d4b8401c615"
+                  }
+                }
+              }
+            }
+          },
+          "type": "object"
+        },
+        "createdBy":
+        {
+          "properties":
+          {
+            "links":
+            {
+              "type": "object",
+              "properties":
+              {
+                "related":
+                {
+                  "type": "string",
+                  "format": "uri-reference",
+                  "example": "\/order\/e1637a42d6e84d918477aa0ad44055a2\/createdBy"
+                }
+              }
+            },
+            "data":
+            {
+              "type": "object",
+              "properties":
+              {
+                "type":
+                {
+                  "type": "string",
+                  "example": "user"
+                },
+                "id":
+                {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "example": "0fda87a2173445c6987df17e4f61b309"
+                }
+              }
+            }
+          },
+          "type": "object"
+        },
+        "updatedBy":
+        {
+          "properties":
+          {
+            "links":
+            {
+              "type": "object",
+              "properties":
+              {
+                "related":
+                {
+                  "type": "string",
+                  "format": "uri-reference",
+                  "example": "\/order\/e1637a42d6e84d918477aa0ad44055a2\/updatedBy"
+                }
+              }
+            },
+            "data":
+            {
+              "type": "object",
+              "properties":
+              {
+                "type":
+                {
+                  "type": "string",
+                  "example": "user"
+                },
+                "id":
+                {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{32}$",
+                  "example": "1bbf714e8e224afa88498b705c1060a8"
+                }
+              }
+            }
+          },
+          "type": "object"
+        }
+      }
+    },
+    "stateMachineState":
+    {
+      "type": "object",
+      "entity": "state_machine_state"
+    },
+    "orderCustomer":
+    {
+      "type": "object",
+      "entity": "order_customer"
+    },
+    "currency":
+    {
+      "type": "object",
+      "entity": "currency"
+    },
+    "language":
+    {
+      "type": "object",
+      "entity": "language"
+    },
+    "salesChannel":
+    {
+      "type": "object",
+      "entity": "sales_channel"
+    },
+    "addresses":
+    {
+      "type": "array",
+      "entity": "order_address"
+    },
+    "billingAddress":
+    {
+      "type": "object",
+      "entity": "order_address"
+    },
+    "deliveries":
+    {
+      "type": "array",
+      "entity": "order_delivery"
+    },
+    "lineItems":
+    {
+      "type": "array",
+      "entity": "order_line_item"
+    },
+    "transactions":
+    {
+      "type": "array",
+      "entity": "order_transaction"
+    },
+    "documents":
+    {
+      "type": "array",
+      "entity": "document"
+    },
+    "tags":
+    {
+      "type": "array",
+      "entity": "tag"
+    },
+    "createdBy":
+    {
+      "type": "object",
+      "entity": "user"
+    },
+    "updatedBy":
+    {
+      "type": "object",
+      "entity": "user"
+    }
+  }
+}
